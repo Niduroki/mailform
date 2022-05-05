@@ -8,8 +8,8 @@ from email.message import EmailMessage
 from email.utils import make_msgid, localtime, format_datetime
 
 app = Flask(__name__)
-app.config['HCAPTCHA_SITE_KEY'] = os.environ("HCAPTCHA_SITE_KEY", "")
-app.config['HCAPTCHA_SECRET_KEY'] = os.environ("HCAPTCHA_SECRET_KEY", "")
+app.config['HCAPTCHA_SITE_KEY'] = environ.get("HCAPTCHA_SITE_KEY", "")
+app.config['HCAPTCHA_SECRET_KEY'] = environ.get("HCAPTCHA_SECRET_KEY", "")
 hcaptcha = hCaptcha(app)
 
 
@@ -22,9 +22,9 @@ def index():
                 if hcaptcha.verify():
                         message = EmailMessage()
                         message['Subject'] = "Kontaktformular Nachricht"
-                        message['From'] = os.environ("SMTP_FROM", "")
-                        message['To'] = os.environ("SMTP_RCPT", "")
-                        message['Message-Id'] = make_msgid(domain=os.environ("SMTP_SERVER", ""))
+                        message['From'] = environ.get("SMTP_FROM", "")
+                        message['To'] = environ.get("SMTP_RCPT", "")
+                        message['Message-Id'] = make_msgid(domain=environ.get("SMTP_SERVER", ""))
                         message['Date'] = format_datetime(localtime())
                         message.set_content(f"""Es gab eine neue Kontaktformular Nachricht:
 
@@ -35,9 +35,9 @@ Terminidee (falls vorhanden): {request.form['date']}
 Nachricht:
 {request.form['message']}""")
                         ssl_context = ssl.create_default_context()
-                        with smtplib.SMTP_SSL(os.environ("SMTP_SERVER", ""), 465, context=ssl_context) as server:
-                                email_user = os.environ("SMTP_FROM", "")
-                                email_password = os.environ("SMTP_PASS", "")
+                        with smtplib.SMTP_SSL(environ.get("SMTP_SERVER", ""), 465, context=ssl_context) as server:
+                                email_user = environ.get("SMTP_FROM", "")
+                                email_password = environ.get("SMTP_PASS", "")
                                 server.login(email_user, email_password)
                                 server.send_message(message)
                         return render_template("send.html", form_data=request.form)
