@@ -1,0 +1,4 @@
+.git
+venv
+mail-cred.env
+__pycache__
