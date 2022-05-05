@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block main %}
+<h2>Deine Nachricht wurde gesendet!</h2>
+<div><b>Typ:</b>
+{% if form_data.type == "shooting" %}Fotoshooting
+{% elif form_data.type == "praise-critique" %}Lob/Kritik
+{% elif form_data.type == "general" %} Allgemeines/Anderes{% endif %}</div>
+<br>
+<div><b>Name:</b> {{ form_data.name }}</div><br>
+<div><b>E-Mail:</b> {{ form_data.email }}</div><br>
+{% if form_data.date %}
+<div><b>Terminidee:</b> {{ form_data.date }}</div><br>
+{% endif %}
+<div><b>Deine Nachricht:</b><br>
+{{ form_data.message }}</div>
+
+<br><br>
+
+<span>Ich werde dir schnellstmöglich eine E-Mail als Antwort senden.<br>– Chris</span>
+{% endblock %}
