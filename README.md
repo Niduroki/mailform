@@ -8,10 +8,10 @@ Personal project for my website.
 
 # Environment-Vars (all required)
 ```
-HCAPTCHA_SITE_KEY = "hcaptcha-site-key"
-HCAPTCHA_SECRET_KEY = "0xhCaptchaSecretKey"
-SMTP_FROM = "user@example.com"
-SMTP_RCPT = "contact@yourmail.com"
-SMTP_SERVER = "mailserver.com"
-SMTP_PASS = "password-for-user"
+HCAPTCHA_SITE_KEY=hcaptcha-site-key
+HCAPTCHA_SECRET_KEY=0xhCaptchaSecretKey
+SMTP_FROM=user@example.com
+SMTP_RCPT=contact@yourmail.com
+SMTP_SERVER=mailserver.com
+SMTP_PASS=password-for-user
 ```
