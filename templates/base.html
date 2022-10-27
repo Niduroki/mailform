@@ -3,12 +3,10 @@
 <head>
 <style>
 html, textarea {
+	color: #15171a;
 	font-family: "Arial", sans-serif;
 }
-label {
-	display: inline-block;
-}
-select, input, textarea, div {
+select, input, textarea {
 	width: 22em;
 	margin-bottom: 1em;
 }
@@ -22,6 +20,39 @@ a:link {
 }
 a {
 	color: #446e9b;
+}
+label {
+  display: inline-block;
+  font-size: .9em;
+  font-weight: 700;
+}
+input, select {
+  height: 2rem;
+}
+input, select, textarea {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: .5rem;
+  padding: 0 .6em;
+  display: block;
+  outline: 0;
+  text-decoration: none;
+  width: 30em;
+}
+select {
+  width: 31.2em;
+  text-transform: none;
+}
+#date_field {
+  width: 100%;
+  margin-bottom: 0;
+}
+textarea {
+  padding: .6em;
+}
+input[type="submit"] {
+  background-color: #6cafaf;
+  color: #fff;
 }
 </style>
 <title>Kontaktformular</title>
